@@ -46,13 +46,61 @@
         @keyframes fadeInSlogan { 100% { opacity: 1; } }
         .blast-mode .portal-container { transform: scale(30); filter: brightness(4) blur(10px); } .blast-mode .intro-text-box { transform: scale(1.5) translateY(30px); opacity: 0; }
 
-        /* --- HEADER & HERO SECTION --- */
+        /* --- HEADER & HERO SECTION (Updated with Glowing Orbs & Grid) --- */
         .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); position: fixed; width: 100%; box-sizing: border-box; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo-text { font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--accent-gold); font-weight: 900; letter-spacing: 1px; }
+        .logo-text { font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--accent-gold); font-weight: 900; letter-spacing: 1px; text-transform: uppercase;}
         .logo-text span { color: white; }
         
-        .hero-section { min-height: 100vh; display: flex; align-items: center; padding: 80px 5% 40px 5%; background: radial-gradient(circle at top left, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); position: relative; overflow: hidden;}
-        .hero-section::after { content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%); border-radius: 50%; z-index: 0; }
+        .hero-section { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            padding: 80px 5% 40px 5%; 
+            background-color: var(--bg-dark);
+            /* Subtle Cyber Grid */
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: relative; 
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Top Left Cyan Glow */
+        .hero-section::before { 
+            content: ''; 
+            position: absolute; 
+            top: -20%; 
+            left: -10%; 
+            width: 700px; 
+            height: 700px; 
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 60%); 
+            border-radius: 50%; 
+            z-index: -1; 
+            filter: blur(80px);
+            animation: breathGlow 8s ease-in-out infinite alternate;
+        }
+
+        /* Bottom Right Gold Glow */
+        .hero-section::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -20%; 
+            right: -10%; 
+            width: 600px; 
+            height: 600px; 
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 60%); 
+            border-radius: 50%; 
+            z-index: -1; 
+            filter: blur(80px);
+            animation: breathGlow 10s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes breathGlow {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
         
         .hero-content { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; z-index: 1; flex-wrap: wrap-reverse; gap: 40px;}
         
